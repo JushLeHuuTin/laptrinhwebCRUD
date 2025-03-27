@@ -1,25 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Xem chi tiết người dùng</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
-
 <body>
     <div class="header">
         <div class="container">
             <nav class="mt-3">
                 <ul class="d-flex justify-content-center list-unstyled border border-dark py-3">
-                    <li class=""><a class="border-end border-start border-dark px-3 text-decoration-none text-dark"
-                            href="index.html">Home</a></li>
-                    <li class=""><a class="border-end border-dark px-3 text-decoration-none text-dark" href="login.html">Đăng
-                            nhập</a></li>
-                    <li class=""><a class="border-end border-dark px-3 text-decoration-none text-dark" href="register.html">Đăng
-                            ký</a></li>
+                    <li><a class="border-end border-start border-dark px-3 text-decoration-none text-dark" href="{{ url('/exe/exe1/index') }}">Home</a></li>
+                    <li><a class="border-end border-dark px-3 text-decoration-none text-dark" href="{{ url('/exe/exe1/login') }}">Đăng nhập</a></li>
+                    <li><a class="border-end border-dark px-3 text-decoration-none text-dark" href="{{ url('/exe/exe1/register') }}">Đăng ký</a></li>
                 </ul>
             </nav>
         </div>
@@ -38,17 +32,17 @@
                                             <p>Username:</p>
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="text" class="form-control border-0" value="John Doe">
+                                            <input type="text" class="form-control border-0" value="John Doe" readonly>
                                         </div>
                                         <div class="col-md-6">
                                             <p>Email:</p>
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="text" class="form-control border-0" value="john.doe@example.com">
+                                            <input type="text" class="form-control border-0" value="john.doe@example.com" readonly>
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary float-end">Cập nhật</button>
+                                <a href="{{ url('/exe/exe1/update') }}" class="btn btn-primary float-end">Cập nhật</a>
                             </form>
                         </div>
                     </div>
@@ -62,5 +56,4 @@
         </div>
     </div>
 </body>
-
 </html>
