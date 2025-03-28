@@ -35,38 +35,38 @@ Route::get('list', [CrudUserController::class, 'listUser'])->name('user.list');
 Route::get('signout', [CrudUserController::class, 'signOut'])->name('signout');
 
 Route::get('/', function () {
-    return view('exe.exe1.login'); // Hiển thị trang chủ từ EXE1
+    return view('welcome'); // Hiển thị trang chủ từ EXE1
 });
-// Route cho URL gốc
-Route::get('/', function () {
-    return view('exe.exe1.index');
-});
+// // Route cho URL gốc
+// Route::get('/', function () {
+//     return view('exe.exe1.index');
+// });
 
-// EXE1: Các trang HTML tĩnh
-Route::get('/exe/exe1/login', function () {
-    return view('exe.exe1.login');
-});
+// // EXE1: Các trang HTML tĩnh
+// Route::get('/exe/exe1/login', function () {
+//     return view('exe.exe1.login');
+// });
 
-Route::get('/exe/exe1/register', function () {
-    return view('exe.exe1.register');
-});
+// Route::get('/exe/exe1/register', function () {
+//     return view('exe.exe1.register');
+// });
 
-Route::get('/exe/exe1/list', function () {
-    return view('exe.exe1.list');
-});
+// Route::get('/exe/exe1/list', function () {
+//     return view('exe.exe1.list');
+// });
 
-Route::get('/exe/exe1/view', function () {
-    return view('exe.exe1.view');
-});
+// Route::get('/exe/exe1/view', function () {
+//     return view('exe.exe1.view');
+// });
 
-Route::get('/exe/exe1/index', function () {
-    return view('exe.exe1.index');
-});
+// Route::get('/exe/exe1/index', function () {
+//     return view('exe.exe1.index');
+// });
 
-Route::get('/exe/exe1/update', function () {
-    return view('exe.exe1.update');
-});
+// Route::get('/exe/exe1/update', function () {
+//     return view('exe.exe1.update');
+// });
 
-// EXE2: Truy vấn dữ liệu
-Route::get('/exe/exe2/list', [App\Http\Controllers\UserController::class, 'index']);
-Route::get('/exe/exe2/orders', [App\Http\Controllers\OrderController::class, 'index']);
+// // EXE2: Truy vấn dữ liệu
+// Route::get('/exe/exe2/list', [App\Http\Controllers\CrudUserController::class, 'index']);
+// Route::get('/exe/exe2/orders', [App\Http\Controllers\OrderController::class, 'index']);
