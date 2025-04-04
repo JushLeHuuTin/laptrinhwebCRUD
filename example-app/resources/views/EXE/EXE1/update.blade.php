@@ -19,6 +19,13 @@
                                     @endif
                                 </div>
                                 <div class="mb-3">
+                                    <label for="username" class="form-label">profile</label>
+                                    <input placeholder="profile" type="file" class="form-control" id="profile" name="profile" value="{{$user->profile}}" require autofocus>
+                                    @if ($errors->has('profile'))
+                                        <span class="text-danger">{{ $errors->first('profile') }}</span>
+                                    @endif
+                                </div>
+                                <div class="mb-3">
                                     <label for="username" class="form-label">like</label>
                                     <input placeholder="like" type="text" class="form-control" id="like" name="like" value="{{$user->like}}" require autofocus>
                                     @if ($errors->has('like'))

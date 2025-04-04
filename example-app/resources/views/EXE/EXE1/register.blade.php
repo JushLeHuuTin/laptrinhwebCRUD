@@ -18,6 +18,13 @@
                                     @endif
                                 </div>
                                 <div class="mb-3">
+                                    <label for="name" class="form-label">profile</label>
+                                    <input type="file" class="form-control" id="profile" name="profile" require autofocus>
+                                    @if ($errors->has('profile'))
+                                        <span class="text-danger">{{ $errors->first('profile') }}</span>
+                                    @endif
+                                </div>
+                                <div class="mb-3">
                                     <label for="name" class="form-label">like</label>
                                     <input type="text" class="form-control" id="like" name="like" require autofocus>
                                     @if ($errors->has('like'))
