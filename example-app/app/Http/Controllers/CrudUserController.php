@@ -22,7 +22,7 @@ class CrudUserController extends Controller
      */
     public function login()
     {
-        return view('crud_user.login');
+        return view('exe.exe1.login');
     }
 
     /**
@@ -31,11 +31,11 @@ class CrudUserController extends Controller
     public function authUser(Request $request)
     {
         $request->validate([
-            'email' => 'required',
+            'username' => 'required',
             'password' => 'required',
         ]);
 
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('username', 'password');
 
         if (Auth::attempt($credentials)) {
             return redirect()->intended('list')
@@ -50,7 +50,7 @@ class CrudUserController extends Controller
      */
     public function createUser()
     {
-        return view('crud_user.create');
+        return view('exe/exe1/register');
     }
 
     /**
@@ -59,18 +59,16 @@ class CrudUserController extends Controller
     public function postUser(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'phone' => 'required',
-            'address' => 'required',
+            'username' => 'required|unique:users',
+           
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
+            'confirm-password' =>'required|same:password',
         ]);
 
         $data = $request->all();
         $check = User::create([
-            'name' => $data['name'],
-            'phone' => $data['phone'],
-            'address' => $data['address'],
+            'username' => $data['username'],
             'email' => $data['email'],
             'password' => FacadesHash::make($data['password'])
         ]);
@@ -85,7 +83,7 @@ class CrudUserController extends Controller
         $user_id = $request->get('id');
         $user = User::find($user_id);
 
-        return view('crud_user.read', ['messi' => $user]);
+        return view('exe.exe1.view', ['messi' => $user]);
     }
 
     /**
@@ -106,7 +104,7 @@ class CrudUserController extends Controller
         $user_id = $request->get('id');
         $user = User::find($user_id);
 
-        return view('crud_user.update', ['user' => $user]);
+        return view('exe.exe1.update', ['user' => $user]);
     }
 
     /**
@@ -117,17 +115,14 @@ class CrudUserController extends Controller
         $input = $request->all();
 
         $request->validate([
-            'name' => 'required',
-            'phone' => 'required',
-            'address' => 'required',
+            'username' => 'required|unique:users,id',
             'email' => 'required|email|unique:users,id,'.$input['id'],
             'password' => 'required|min:6',
+            'confirm-password' =>'required|same:password',
         ]);
 
        $user = User::find($input['id']);
-       $user->name = $input['name'];
-       $user->phone = $input['phone'];
-       $user->address = $input['address'];
+       $user->username = $input['username'];
        $user->email = $input['email'];
        $user->password = $input['password'];
        $user->save();
@@ -142,7 +137,7 @@ class CrudUserController extends Controller
     {
         if(Auth::check()){
             $users = User::all();
-            return view('crud_user.list', ['users' => $users]);
+            return view('exe.exe1.list', ['users' => $users]);
         }
 
         return redirect("login")->withSuccess('You are not allowed to access');

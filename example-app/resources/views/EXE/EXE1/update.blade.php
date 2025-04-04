@@ -1,23 +1,6 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cập nhật thông tin</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-</head>
-<body>
-    <div class="header">
-        <div class="container">
-            <nav class="mt-3">
-                <ul class="d-flex justify-content-center list-unstyled border border-dark py-3">
-                    <li><a class="border-end border-start border-dark px-3 text-decoration-none text-dark" href="{{ url('/exe/exe1/index') }}">Home</a></li>
-                    <li><a class="border-end border-dark px-3 text-decoration-none text-dark" href="{{ url('/exe/exe1/login') }}">Đăng nhập</a></li>
-                    <li><a class="border-end border-dark px-3 text-decoration-none text-dark" href="{{ url('/exe/exe1/register') }}">Đăng ký</a></li>
-                </ul>
-            </nav>
-        </div>
-    </div>
+@extends('dashboard')
+
+@section('content')
     <div class="content">
         <div class="container">
             <div class="row justify-content-center my-5">
@@ -25,25 +8,39 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Cập nhật thông tin</h5>
-                            <form action="">
+                            <form action="{{ route('user.postUpdateUser') }}" method="POST">
+                                @csrf
+                                <input name="id" type="hidden" value="{{$user->id}}">
                                 <div class="mb-3">
                                     <label for="username" class="form-label">Username</label>
-                                    <input placeholder="John Doe" type="text" class="form-control" id="username" name="username" value="John Doe">
+                                    <input placeholder="username" type="text" class="form-control" id="username" name="username" value="{{$user->username}}" require autofocus>
+                                    @if ($errors->has('username'))
+                                        <span class="text-danger">{{ $errors->first('username') }}</span>
+                                    @endif
                                 </div>
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Mật khẩu</label>
-                                    <input placeholder="xxx" type="password" class="form-control" id="password" name="password">
+                                    <input placeholder="xxx" type="password" class="form-control" id="password" name="password" require autofocus>
+                                    @if ($errors->has('password'))
+                                        <span class="text-danger">{{ $errors->first('password') }}</span>
+                                    @endif
                                 </div>
                                 <div class="mb-3">
                                     <label for="confirm-password" class="form-label">Nhập lại mật khẩu</label>
-                                    <input placeholder="xxx" type="password" class="form-control" id="confirm-password" name="confirm-password">
+                                    <input placeholder="xxx" type="password" class="form-control" id="confirm-password" name="confirm-password" require autofocus>
+                                    @if ($errors->has('confirm-password'))
+                                        <span class="text-danger">{{ $errors->first('confirm-password') }}</span>
+                                    @endif
                                 </div>
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email</label>
-                                    <input placeholder="john.doe@example.com" type="email" class="form-control" id="email" name="email" value="john.doe@example.com">
+                                    <input placeholder="john.doe@example.com" type="text" class="form-control" id="email-address" name="email" value="{{$user->email}}" require autofocus>
+                                    @if ($errors->has('email'))
+                                        <span class="text-danger">{{ $errors->first('email') }}</span>
+                                    @endif
                                 </div>
                                 <div class="mb-3 d-flex justify-content-end gap-3">
-                                    <a href="{{ url('/exe/exe1/view') }}" class="btn btn-secondary">Hủy bỏ</a>
+                                    <a href="{{ url('/exe/exe1/list') }}" class="btn btn-secondary">Hủy bỏ</a>
                                     <button type="submit" class="btn btn-primary">Cập nhật</button>
                                 </div>
                             </form>
@@ -53,10 +50,4 @@
             </div>
         </div>
     </div>
-    <div class="footer position-sticky bottom-0">
-        <div class="container">
-            <p class="text-center py-3 border border-dark">Copyright © 2025</p>
-        </div>
-    </div>
-</body>
-</html>
+    @endsection

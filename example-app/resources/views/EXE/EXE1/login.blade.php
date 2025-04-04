@@ -1,23 +1,6 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng nhập</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-</head>
-<body>
-    <div class="header">
-        <div class="container">
-            <nav class="mt-3">
-                <ul class="d-flex justify-content-center list-unstyled border border-dark py-3">
-                    <li><a class="border-end border-start border-dark px-3 text-decoration-none text-dark" href="{{ url('/exe/exe1/index') }}">Home</a></li>
-                    <li><a class="border-end border-dark px-3 text-decoration-none text-dark" href="{{ url('/exe/exe1/login') }}">Đăng nhập</a></li>
-                    <li><a class="border-end border-dark px-3 text-decoration-none text-dark" href="{{ url('/exe/exe1/register') }}">Đăng ký</a></li>
-                </ul>
-            </nav>
-        </div>
-    </div>
+@extends('dashboard')
+
+@section('content')
     <div class="content">
         <div class="container">
             <div class="row justify-content-center my-5">
@@ -25,21 +8,31 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Đăng nhập</h5>
-                            <form action="">
+                            <form  method="POST" action="{{ route('user.authUser') }}">
+                            @csrf
                                 <div class="mb-3">
                                     <label for="username" class="form-label">Username</label>
-                                    <input type="text" class="form-control" id="username" name="username">
+                                    <input type="text" placeholder="username" id="username" class="form-control" name="username" required
+                                    autofocus>
+                                    @if ($errors->has('username'))
+                                        <span class="text-danger">{{ $errors->first('username') }}</span>
+                                    @endif
                                 </div>
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Mật khẩu</label>
-                                    <input type="password" class="form-control" id="password" name="password">
+                                    <input type="password" placeholder="mật khẩu" class="form-control" id="password" name="password" required
+                                    autofocus>
+                                    @if ($errors->has('password'))
+                                        <span class="text-danger">{{ $errors->first('password') }}</span>
+                                    @endif
                                 </div>
                                 <div class="mb-3">
                                     <label for="remember" class="form-label">Ghi nhớ đăng nhập</label>
                                     <input type="checkbox" class="form-check-input" id="remember" name="remember">
+
                                 </div>
                                 <div class="mb-3 d-flex justify-content-end gap-3">
-                                    <button type="submit" class="btn btn-primary">Quên mật khẩu</button>
+                                    <button type="" class="btn ">Quên mật khẩu</button>
                                     <button type="submit" class="btn btn-primary">Đăng nhập</button>
                                 </div>
                             </form>
@@ -49,10 +42,5 @@
             </div>
         </div>
     </div>
-    <div class="footer position-sticky bottom-0">
-        <div class="container">
-            <p class="text-center py-3 border border-dark">Copyright © 2025</p>
-        </div>
-    </div>
-</body>
-</html>
+ 
+    @endsection
