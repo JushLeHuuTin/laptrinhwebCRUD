@@ -19,6 +19,20 @@
                                     @endif
                                 </div>
                                 <div class="mb-3">
+                                    <label for="username" class="form-label">like</label>
+                                    <input placeholder="like" type="text" class="form-control" id="like" name="like" value="{{$user->like}}" require autofocus>
+                                    @if ($errors->has('like'))
+                                        <span class="text-danger">{{ $errors->first('like') }}</span>
+                                    @endif
+                                </div>
+                                <div class="mb-3">
+                                    <label for="username" class="form-label">github</label>
+                                    <input placeholder="github" type="text" class="form-control" id="github" name="github" value="{{$user->github}}" require autofocus>
+                                    @if ($errors->has('github'))
+                                        <span class="text-danger">{{ $errors->first('github') }}</span>
+                                    @endif
+                                </div>
+                                <div class="mb-3">
                                     <label for="password" class="form-label">Mật khẩu</label>
                                     <input placeholder="xxx" type="password" class="form-control" id="password" name="password" require autofocus>
                                     @if ($errors->has('password'))
