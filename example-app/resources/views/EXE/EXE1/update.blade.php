@@ -19,20 +19,6 @@
                                     @endif
                                 </div>
                                 <div class="mb-3">
-                                    <label for="username" class="form-label">phone</label>
-                                    <input placeholder="phone" type="text" class="form-control" id="phone" name="phone" value="{{$user->phone}}" require autofocus>
-                                    @if ($errors->has('phone'))
-                                        <span class="text-danger">{{ $errors->first('phone') }}</span>
-                                    @endif
-                                </div>
-                                <div class="mb-3">
-                                    <label for="username" class="form-label">address</label>
-                                    <input placeholder="address" type="text" class="form-control" id="address" name="address" value="{{$user->address}}" require autofocus>
-                                    @if ($errors->has('address'))
-                                        <span class="text-danger">{{ $errors->first('address') }}</span>
-                                    @endif
-                                </div>
-                                <div class="mb-3">
                                     <label for="password" class="form-label">Mật khẩu</label>
                                     <input placeholder="xxx" type="password" class="form-control" id="password" name="password" require autofocus>
                                     @if ($errors->has('password'))

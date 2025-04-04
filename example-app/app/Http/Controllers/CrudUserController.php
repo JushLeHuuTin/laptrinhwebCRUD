@@ -60,8 +60,6 @@ class CrudUserController extends Controller
     {
         $request->validate([
             'username' => 'required|unique:users',
-            'address' => 'required',
-            'phone' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
             'confirm-password' =>'required|same:password',
@@ -70,8 +68,6 @@ class CrudUserController extends Controller
         $data = $request->all();
         $check = User::create([
             'username' => $data['username'],
-            'address' => $data['address'],
-            'phone' => $data['phone'],
             'email' => $data['email'],
             'password' => FacadesHash::make($data['password'])
         ]);
@@ -119,8 +115,6 @@ class CrudUserController extends Controller
 
         $request->validate([
             'username' => 'required|unique:users,id',
-            'phone' => 'required|unique:users,id',
-            'address' => 'required|unique:users,id',
             'email' => 'required|email|unique:users,id,'.$input['id'],
             'password' => 'required|min:6',
             'confirm-password' =>'required|same:password',

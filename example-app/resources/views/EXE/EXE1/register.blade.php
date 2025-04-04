@@ -17,20 +17,6 @@
                                         <span class="text-danger">{{ $errors->first('username') }}</span>
                                     @endif
                                 </div>
-                                <div class="mb-3">
-                                    <label for="name" class="form-label">phone</label>
-                                    <input type="text" class="form-control" id="phone" name="phone" require autofocus>
-                                    @if ($errors->has('phone'))
-                                        <span class="text-danger">{{ $errors->first('phone') }}</span>
-                                    @endif
-                                </div>
-                                <div class="mb-3">
-                                    <label for="name" class="form-label">address</label>
-                                    <input type="text" class="form-control" id="address" name="address" require autofocus>
-                                    @if ($errors->has('address'))
-                                        <span class="text-danger">{{ $errors->first('address') }}</span>
-                                    @endif
-                                </div>
                          
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Mật khẩu</label>
