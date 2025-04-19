@@ -11,11 +11,11 @@
                             <form  method="POST" action="{{ route('user.authUser') }}">
                             @csrf
                                 <div class="mb-3">
-                                    <label for="username" class="form-label">Username</label>
-                                    <input type="text" placeholder="username" id="username" class="form-control" name="username" required
+                                    <label for="email" class="form-label">email</label>
+                                    <input type="email" placeholder="email" id="email" class="form-control" name="email" required
                                     autofocus>
-                                    @if ($errors->has('username'))
-                                        <span class="text-danger">{{ $errors->first('username') }}</span>
+                                    @if ($errors->has('email'))
+                                        <span class="text-danger">{{ $errors->first('email') }}</span>
                                     @endif
                                 </div>
                                 <div class="mb-3">

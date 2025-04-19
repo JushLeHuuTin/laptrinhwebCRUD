@@ -14,10 +14,10 @@
             <div class="container">
                 <nav class="mt-3">
                     <ul class="d-flex justify-content-center list-unstyled border border-dark py-3">
-                        <li><a class="border-end border-start border-dark px-3 text-decoration-none text-dark" href="{{ url('/exe/exe1/index') }}">Home</a></li>
+                        <li><a class="border-end border-start border-dark px-3 text-decoration-none text-dark" href="{{ route('index') }}">Home</a></li>
                     @guest
-                        <li><a class="border-end border-dark px-3 text-decoration-none text-dark" href="{{ url('/exe/exe1/login') }}">Đăng nhập</a></li>
-                        <li><a class="border-end border-dark px-3 text-decoration-none text-dark" href="{{ url('/exe/exe1/register') }}">Đăng ký</a></li>
+                        <li><a class="border-end border-dark px-3 text-decoration-none text-dark" href="{{ route('login') }}">Đăng nhập</a></li>
+                        <li><a class="border-end border-dark px-3 text-decoration-none text-dark" href="{{ route('register') }}">Đăng ký</a></li>
                         @else
                     <li class="nav-item">
                         <a class="border-end border-dark px-3 text-decoration-none text-dark" href="{{ route('signout') }}">Đăng xuất</a>
@@ -34,7 +34,7 @@
      </main>
     <div class="footer position-sticky bottom-0">
         <div class="container">
-            <p class="text-center py-3 border border-dark">Copyright © 2025</p>
+            <p class="text-center py-3 border border-dark bg-white">Copyright © 2025</p>
         </div>
     </div>
 </body>

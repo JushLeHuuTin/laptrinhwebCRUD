@@ -15,7 +15,7 @@
                                             <p>Username:</p>
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="text" class="form-control border-0 bg-white"  value="{{$messi->username}}" readonly>
+                                            <input type="text" class="form-control border-0 bg-white"  value="{{$messi->email}}" readonly>
                                         </div>
                                         <div class="col-md-6">
                                             <p>Email:</p>

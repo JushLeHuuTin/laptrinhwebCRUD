@@ -11,10 +11,10 @@
                             <form action="{{ route('user.postUser') }}" method="POST">
                                 @csrf
                                 <div class="mb-3">
-                                    <label for="name" class="form-label">Username</label>
-                                    <input type="text" class="form-control" id="username" name="username" require autofocus>
-                                    @if ($errors->has('username'))
-                                        <span class="text-danger">{{ $errors->first('username') }}</span>
+                                    <label for="name" class="form-label">name</label>
+                                    <input type="text" class="form-control" id="name" name="name" require autofocus>
+                                    @if ($errors->has('name'))
+                                        <span class="text-danger">{{ $errors->first('name') }}</span>
                                     @endif
                                 </div>
                                 <div class="mb-3">

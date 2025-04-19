@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Hash;
 use Session;
 use App\Models\User;
-use Illuminate\Contracts\Session\Session as SessionSession;
+use App\Http\Controllers\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash as FacadesHash;
@@ -16,13 +16,17 @@ use Illuminate\Support\Facades\Session as FacadesSession;
  */
 class CrudUserController extends Controller
 {
-
+ const MAX_RECORDS = 10;
     /**
      * Login page
      */
     public function login()
     {
         return view('exe.exe1.login');
+    }
+    public function index()
+    {
+        return view('exe.exe1.index');
     }
 
     /**
@@ -31,13 +35,15 @@ class CrudUserController extends Controller
     public function authUser(Request $request)
     {
         $request->validate([
-            'username' => 'required',
+            'email' => 'required',
             'password' => 'required',
         ]);
 
-        $credentials = $request->only('username', 'password');
+        $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials)) {  
+            // dd(Auth::check());
+
             return redirect()->intended('list')
                 ->withSuccess('Signed in');
         }
@@ -48,7 +54,7 @@ class CrudUserController extends Controller
     /**
      * Registration page
      */
-    public function createUser()
+    public function register()
     {
         return view('exe/exe1/register');
     }
@@ -59,8 +65,7 @@ class CrudUserController extends Controller
     public function postUser(Request $request)
     {
         $request->validate([
-            'username' => 'required|unique:users',
-           
+            'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
             'confirm-password' =>'required|same:password',
@@ -68,7 +73,7 @@ class CrudUserController extends Controller
 
         $data = $request->all();
         $check = User::create([
-            'username' => $data['username'],
+            'name' => $data['name'],
             'email' => $data['email'],
             'password' => FacadesHash::make($data['password'])
         ]);
@@ -115,14 +120,14 @@ class CrudUserController extends Controller
         $input = $request->all();
 
         $request->validate([
-            'username' => 'required|unique:users,id',
+            'name' => 'required',
             'email' => 'required|email|unique:users,id,'.$input['id'],
             'password' => 'required|min:6',
             'confirm-password' =>'required|same:password',
         ]);
 
        $user = User::find($input['id']);
-       $user->username = $input['username'];
+       $user->name = $input['name'];
        $user->email = $input['email'];
        $user->password = $input['password'];
        $user->save();
@@ -136,8 +141,9 @@ class CrudUserController extends Controller
     public function listUser()
     {
         if(Auth::check()){
-            $users = User::all();
-            return view('exe.exe1.list', ['users' => $users]);
+            $users = User::paginate(self::MAX_RECORDS);
+            $data = ['users' => $users];
+            return view('exe.exe1.list', $data);
         }
 
         return redirect("login")->withSuccess('You are not allowed to access');

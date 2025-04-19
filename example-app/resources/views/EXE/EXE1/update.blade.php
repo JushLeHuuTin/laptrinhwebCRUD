@@ -12,10 +12,10 @@
                                 @csrf
                                 <input name="id" type="hidden" value="{{$user->id}}">
                                 <div class="mb-3">
-                                    <label for="username" class="form-label">Username</label>
-                                    <input placeholder="username" type="text" class="form-control" id="username" name="username" value="{{$user->username}}" require autofocus>
-                                    @if ($errors->has('username'))
-                                        <span class="text-danger">{{ $errors->first('username') }}</span>
+                                    <label for="name" class="form-label">name</label>
+                                    <input placeholder="name" type="text" class="form-control" id="name" name="name" value="{{$user->name}}" require autofocus>
+                                    @if ($errors->has('name'))
+                                        <span class="text-danger">{{ $errors->first('name') }}</span>
                                     @endif
                                 </div>
                                 <div class="mb-3">
@@ -40,7 +40,7 @@
                                     @endif
                                 </div>
                                 <div class="mb-3 d-flex justify-content-end gap-3">
-                                    <a href="{{ url('/exe/exe1/list') }}" class="btn btn-secondary">Hủy bỏ</a>
+                                    <a href="{{ route('user.list') }}" class="btn btn-secondary">Hủy bỏ</a>
                                     <button type="submit" class="btn btn-primary">Cập nhật</button>
                                 </div>
                             </form>
