@@ -157,4 +157,10 @@ class CrudUserController extends Controller
         Auth::logout();
         return Redirect('login');
     }
+// find
+    public function find(Request $request) {
+        $user_id = $request->get('id');
+        $oneuser = User::find($user_id);
+        return view('exe.exe1.list',['oneuser'=>$oneuser]);
+    }
 }

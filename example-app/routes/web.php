@@ -41,5 +41,7 @@ Route::get('role', [RoleController::class, 'role'])->name('user.role');
 Route::get('/',function(){
 return view("welcome");
 });
-
+//order
 Route::get('order', [OrderController::class, 'view'])->name('user.order');
+Route::get('order/find', [CrudUserController::class, 'find'])->name('user.find');
+

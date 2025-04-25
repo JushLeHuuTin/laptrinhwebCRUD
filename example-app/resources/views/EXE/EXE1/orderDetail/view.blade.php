@@ -38,6 +38,7 @@
                                 <tr>
                                     <th scope="col">ID</th>
                                     <th scope="col">Tên sản phẩm</th>
+                                    <th scope="col">Số lượng</th>
                                     <th scope="col">Giá</th>
                                     <th scope="col">Mô tả</th>
                                 </tr>
@@ -47,6 +48,7 @@
                                     <tr>
                                         <td>{{ $product->id }}</td>
                                         <td>{{ $product->name }}</td>
+                                        <td>{{ $product->pivot->quantity }}</td>
                                         <td>{{ number_format($product->price) }} VND</td>
                                         <td>{{ $product->description }}</td>
                                     </tr>
