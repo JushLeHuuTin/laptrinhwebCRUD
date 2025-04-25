@@ -14,6 +14,7 @@
                                     <th>STT</th>
                                     <th>name</th>
                                     <th>Role</th>
+                                    <th>Order</th>
                                     <th>Email</th>
                                     <th>Action</th>
                                 </tr>
@@ -27,6 +28,13 @@
                                         @foreach($user->roles as $role)
                                         <a href="{{ route('user.role', ['id' => $role->id]) }}">
                                             {{ $role->role_name . '-' }}
+                                        </a>
+                                    @endforeach
+                                    </td>
+                                    <td>
+                                        @foreach($user->Orders as $order)
+                                        <a href="{{ route('user.order', ['id' => $order->id]) }}">
+                                            {{ $order->id . '-' }}
                                         </a>
                                     @endforeach
                                     </td>

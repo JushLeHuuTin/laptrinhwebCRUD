@@ -155,7 +155,6 @@ class CrudUserController extends Controller
     public function signOut() {
         FacadesSession::flush();
         Auth::logout();
-
         return Redirect('login');
     }
 }

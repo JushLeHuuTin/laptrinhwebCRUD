@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\Order;
+use App\Models\OrderDetail;
 
 class OrderController extends Controller
 {
@@ -16,4 +19,15 @@ class OrderController extends Controller
 
         return view('exe.exe2.orders', ['orders' => $orders]);
     }
+    public function view(Request $request)
+    {
+        $order_id = $request->get('id');
+        $orders = Order::find($order_id);
+        $data = [
+            'order' => $orders,
+            'products' => $orders->products,
+        ];
+        return view('exe.exe1.orderDetail.view', $data);
+    }
+
 }
